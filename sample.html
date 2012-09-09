@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>jquery.carousel.js</title>
+<style>
+* {
+}
+
+html, body, div, ul, li, img {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	border: 0;
+	vertical-align: bottom;
+}
+
+#document {
+	zoom: 1;
+}
+
+.mod-gallery {
+	position: relative;
+	overflow: hidden;
+}
+
+.mod-gallery-pohotos {
+	list-style: none;
+}
+
+.mod-gallery-item {
+	float: left;
+	width: 400px;
+	list-style: none;
+}
+
+.mod-gallery-controller {
+	background: #999;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 3;
+	width: 300px;
+}
+
+
+#sample1 { height: 400px; overflow: hidden; }
+
+#sample2 { position: relative; height: 140px; padding: 50px; background: #101010; overflow: hidden; }
+#sample2 .mod-gallery-item { width: 200px; }
+#sample2 .mod-gallery-item img { width: 200px; height: auto; }
+
+#sample3 { width: 600px; height: 200px; margin: 0 auto; background: #333; overflow: hidden; }
+#sample3 .mod-gallery-item { width: 100px; }
+#sample3 .mod-gallery-item img { width: 100px; height: auto; }
+
+
+#line {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	z-index: -1;
+	width: 1px;
+	height: 100%;
+	background: #F00;
+	overflow: visible;
+	white-space: nowrap;
+}
+* html #line {
+	position: absolute;
+	overflow: hidden;
+	height: 300px;
+}
+
+/**
+.ui-carousel-cloneAppend {
+	background: #000;
+}
+.ui-carousel-clonePrepend {
+	background: #00F;
+}
+.ui-carousel-cloneAppend  img,
+.ui-carousel-clonePrepend img {
+	opacity: 0.5;
+}
+*/
+</style>
+</head>
+
+<body>
+<div id="document">
+<h1>$.fn.carousel</h1>
+
+<div id="line">Center Line</div>
+
+<h2>#sample1</h2>
+<div class="mod-gallery" id="sample1">
+<ul class="mod-gallery-photos">
+<li class="mod-gallery-item"><a href="#"><img src="img/dummy_img_01.jpg" width="400" height="300" alt=""></a></li>
+<li class="mod-gallery-item"><a href="#"><img src="img/dummy_img_02.jpg" width="400" height="300" alt=""></a></li>
+<li class="mod-gallery-item"><a href="#"><img src="img/dummy_img_03.jpg" width="400" height="300" alt=""></a></li>
+</ul>
+<div class="mod-gallery-controller">
+<div class="ui-carousel-prev">Prev</div>
+<div class="ui-carousel-next">Next</div>
+<div class="ui-carousel-play">Play</div>
+</div>
+<!-- /.mod-gallery --></div>
+
+<h3>Code</h3>
+<pre>
+	$('#sample1').carousel({
+		selectorItemList: '.mod-gallery-photos'
+	  , selectorItem: '.mod-gallery-item'
+	});
+</pre>
+
+<hr>
+
+<h2>#sample2</h2>
+<div class="mod-gallery" id="sample2">
+<ul class="mod-gallery-photos">
+<li class="mod-gallery-item"><a href="#"><img src="img/dummy_img_01.jpg" width="400" height="300" alt=""></a></li>
+<li class="mod-gallery-item"><a href="#"><img src="img/dummy_img_02.jpg" width="400" height="300" alt=""></a></li>
+</ul>
+<!-- /.mod-gallery --></div>
+
+<h3>Code</h3>
+<pre>
+	$('#sample2').carousel({
+		selectorItemList: '.mod-gallery-photos'
+	  , selectorItem: '.mod-gallery-item'
+	  , speed: 5000
+	  , easing: 'linear'
+	  , autoPlay: true
+	  , autoPlayTimeout: 2000
+	  , interval: 0
+	});
+</pre>
+
+<hr>
+
+<h2>#sample3</h2>
+<div class="mod-gallery" id="sample3">
+<ul class="mod-gallery-photos">
+<li class="mod-gallery-item"><a href="#"><img src="img/dummy_img_01.jpg" width="400" height="300" alt=""></a></li>
+<li class="mod-gallery-item"><a href="#"><img src="img/dummy_img_02.jpg" width="400" height="300" alt=""></a></li>
+<li class="mod-gallery-item"><a href="#"><img src="img/dummy_img_03.jpg" width="400" height="300" alt=""></a></li>
+</ul>
+<div class="mod-gallery-controller">
+<div class="ui-carousel-prev">Prev</div>
+<div class="ui-carousel-next">Next</div>
+<div class="ui-carousel-play">Play Reverse</div>
+</div>
+<!-- /.mod-gallery --></div>
+
+<h3>Code</h3>
+<pre>
+	$('#sample3').carousel({
+		selectorItemList: '.mod-gallery-photos'
+	  , selectorItem: '.mod-gallery-item'
+	  , speed: 300
+	  , easing: 'easeOutQuart'
+	  , autoPlay: false
+	  , interval: 1000
+	  , playReverse: true
+	  , playButtonText: 'Play Reverse'
+	  , stopButtonText: 'Stop Reverse Playing'
+	});
+</pre>
+</div>
+
+<script src="jquery-1.8.1.min.js"></script>
+<script src="jquery.effects.core.js"></script>
+<script src="jquery.throttingResize.js"></script>
+<script src="jquery.carousel.js"></script>
+<script>
+(function ($) {
+	$('#sample1').carousel({
+		selectorItemList: '.mod-gallery-photos'
+	  , selectorItem: '.mod-gallery-item'
+	});
+
+	$('#sample2').carousel({
+		selectorItemList: '.mod-gallery-photos'
+	  , selectorItem: '.mod-gallery-item'
+	  , speed: 5000
+	  , easing: 'linear'
+	  , autoPlay: true
+	  , autoPlayTimeout: 2000
+	  , interval: 0
+	});
+
+	$('#sample3').carousel({
+		selectorItemList: '.mod-gallery-photos'
+	  , selectorItem: '.mod-gallery-item'
+	  , speed: 300
+	  , easing: 'easeOutQuart'
+	  , autoPlay: false
+	  , interval: 1000
+	  , playReverse: true
+	  , playButtonText: 'Play Reverse'
+	  , stopButtonText: 'Stop Reverse Playing'
+	});
+})(jQuery);
+</script>
+</body>
+</html>
