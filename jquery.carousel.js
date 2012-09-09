@@ -28,6 +28,7 @@
 	  , stopButtonText: 'Stop'
 	  , cloneAppendClass: 'ui-carousel-cloneAppend'
 	  , clonePrependClass: 'ui-carousel-clonePrepend'
+	  , windowResizeSupport: true
 	};
 
 
@@ -102,10 +103,11 @@
 				}, o.autoPlayTimeout);
 			}
 
-			var $watcher = $.throttingResize();
-			$watcher.on('throttingResize', function () {
-				__this.refresh();
-			});
+			if (o.windowResizeSupport) {
+				$.throttingResize().on('throttingResize', function () {
+					__this.refresh();
+				});
+			}
 
 			return __this;
 		}
