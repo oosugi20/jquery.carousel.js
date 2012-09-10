@@ -29,6 +29,8 @@
 	  , cloneAppendClass: 'ui-carousel-cloneAppend'
 	  , clonePrependClass: 'ui-carousel-clonePrepend'
 	  , windowResizeSupport: true
+	  , useThrottlingEvent: true
+	  , throttlingInterval: 40
 	};
 
 
@@ -104,9 +106,18 @@
 			}
 
 			if (o.windowResizeSupport) {
-				$.throttingResize().on('throttingResize', function () {
-					__this.refresh();
-				});
+
+				if (o.useThrottlingEvent) {
+					$.throttlingResize({
+						interval: o.throttlingInterval
+					}).on('throttlingResize' + o.throttlingInterval, function () {
+						__this.refresh();
+					});
+				} else {
+					$(window).on('resize', function () {
+						__this.refresh();
+					});
+				}
 			}
 
 			return __this;

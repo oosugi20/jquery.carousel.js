@@ -114,6 +114,7 @@ img {
 	$('#sample1').carousel({
 		selectorItemList: '.mod-gallery-photos'
 	  , selectorItem: '.mod-gallery-item'
+	  , useThrottlingEvent: false
 	});
 </pre>
 
@@ -135,8 +136,10 @@ img {
 	  , speed: 5000
 	  , easing: 'linear'
 	  , autoPlay: true
-	  , autoPlayTimeout: 2000
+	  , autoPlayTimeout: 3000
 	  , interval: 0
+	  , useThrottlingEvent: true
+	  , throttlingInterval: 200
 	});
 </pre>
 
@@ -175,13 +178,14 @@ img {
 
 <script src="jquery-1.8.1.min.js"></script>
 <script src="jquery.effects.core.js"></script>
-<script src="jquery.throttingResize.js"></script>
+<script src="jquery.throttlingResize.js"></script>
 <script src="jquery.carousel.js"></script>
 <script>
 (function ($) {
 	$('#sample1').carousel({
 		selectorItemList: '.mod-gallery-photos'
 	  , selectorItem: '.mod-gallery-item'
+	  , useThrottlingEvent: false
 	});
 
 	$('#sample2').carousel({
@@ -190,8 +194,10 @@ img {
 	  , speed: 5000
 	  , easing: 'linear'
 	  , autoPlay: true
-	  , autoPlayTimeout: 2000
+	  , autoPlayTimeout: 3000
 	  , interval: 0
+	  , useThrottlingEvent: true
+	  , throttlingInterval: 200
 	});
 
 	$('#sample3').carousel({
